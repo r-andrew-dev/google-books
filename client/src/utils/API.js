@@ -7,5 +7,10 @@ export default {
     console.log(query)
     console.log('made it back to the export')
     return axios.get("/api/booksearch", { params: { q: query } });
+  },
+
+  getSaved: function() {
+    console.log('made it here')
+    return axios.get("api/saved")
   }
 };
