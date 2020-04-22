@@ -25,8 +25,9 @@ class Search extends Component {
         console.log('made it here')
         event.preventDefault();
         API.getBooks(this.state.bookSearch)
-        .then(res => console.log(res))
-        //   .then(res => this.setState({ books: res.data }))
+        // .then(res => console.log(res.data.items))
+          .then(res => this.setState({ books: res.data.items,
+                                      bookSearch: ''}))
           .catch(err => console.log(err));
       };
 
@@ -59,12 +60,12 @@ render() {
                   {this.state.books.map(book => {
                     return (
                       <BookSearchItem
-                        key={book.title}
-                        title={book.title}
-                        authors={book.authors}
-                        description={book.description}
-                        image={book.thumbnail}
-                        link={book.link}
+                        key={book.volumeInfo.title}
+                        title={book.volumeInfo.title}
+                        authors={book.volumeInfo.authors[0]}
+                        description={book.volumeInfo.description}
+                        image={book.volumeInfo.imageLinks.thumbnail}
+                        link={book.volumeInfo.canonicalVolumeLink}
                       />
                     );
                   })}
