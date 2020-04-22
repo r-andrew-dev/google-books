@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Button, Card } from 'react-bootstrap/'
 import Input from '../Input';
 import API from '../../utils/API';
+import { BookSearchList, BookSearchItem } from "../BookSearchList";
 
 class Search extends Component {
 
@@ -50,6 +51,25 @@ render() {
                     </Button>
                 </Card.Body>
             </Card>
+              {!this.state.books.length ? (
+                <h1 className="text-center">No Books to Display.</h1>
+              ) : (
+                <Card>
+                <BookSearchList>
+                  {this.state.books.map(book => {
+                    return (
+                      <BookSearchItem
+                        key={book.title}
+                        title={book.title}
+                        authors={book.authors}
+                        description={book.description}
+                        image={book.thumbnail}
+                        link={book.link}
+                      />
+                    );
+                  })}
+                </BookSearchList>
+            </Card>)}
         </div>
     )
         

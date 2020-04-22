@@ -8,19 +8,15 @@ const countryName = "US"
 const googleKey = key.google.key
 
 
-
 router.get("/booksearch", (req, res) => {
-    console.log("MAKING IT HERE"),
+  let query = req.query.q
     axios
-      .get(`https://www.googleapis.com/books/v1/volumes?q=`,
-      { params: req.query }
-        // key: googleKey,
-        // country: countryName }
-    ).then(res => console.log(res.data.items[0].volumeInfo))
-    //   .then(({ data: { results } }) => res.json(results))
+      .get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${googleKey}&country=${countryName}`
+
+    // ).then(res => console.log(res.data))
+      ).then(response => res.json(response.data))
       .catch(err => console.log(err))
-//   });
-});
+  });
 
 
 // router.get('/api/books', (req, res, next) => {
