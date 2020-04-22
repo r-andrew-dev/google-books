@@ -1,9 +1,9 @@
 const express = require("express");
-const routes = require('./routes/booksapi')
 const mongoose = require('mongoose')
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const routes = require('./routes/booksapi')
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -27,11 +27,13 @@ mongoose.connect(
 })
 
 
-app.use(routes);
+app.use("/api", routes);
 // Define any API routes before this runs
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
+
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
