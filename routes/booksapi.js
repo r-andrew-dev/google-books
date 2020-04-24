@@ -38,7 +38,7 @@ router.post('/saved', (req, res, next) => {
 router.delete('/saved/:id', (req, res, next) => {
     console.log("just delete")
     Books.deleteOne({"id":req.param.id})
-    .then(data =>res.json(data))
+    .then(data => res.json({success: true}))
     .catch(next)
 });
 

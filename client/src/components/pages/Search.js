@@ -8,7 +8,12 @@ class Search extends Component {
 
     state = {
         books: [],
-        bookSearch: ''
+        bookSearch: '',
+        title: '',
+        authors: [],
+        description: '',
+        image: '',
+        link: ''
     }
 
     handleInputChange = event => {
@@ -30,10 +35,15 @@ class Search extends Component {
           .catch(err => console.log(err));
       };
 
+      addBook = (book) =>
+        API.saveBook(book) 
+        .then(response => console.log(response))
+        
+
 render() {
     return (
         <div>
-            <Card>
+            <Card className='m-3 p-2'>
                 <Card.Title>Book Search</Card.Title>
                 <Card.Body>
                     <Input
@@ -42,6 +52,7 @@ render() {
                         onChange={this.handleInputChange}
                         placeholder="Search For a Book">
                     </Input>
+                    <div className='mt-4'>
                     <Button variant='info'
                         onClick={this.handleFormSubmit}
                         type="success"
@@ -49,6 +60,7 @@ render() {
                     >
                     Search
                     </Button>
+                    </div>
                 </Card.Body>
             </Card>
               {!this.state.books.length ? (
@@ -60,11 +72,14 @@ render() {
                     return (
                       <BookSearchItem
                         key={book.volumeInfo.title}
+                        saveID={book.volumeInfo.title}
                         title={book.volumeInfo.title}
-                        authors={book.volumeInfo.authors[0]}
+                        authors={book.volumeInfo.authors}
                         description={book.volumeInfo.description}
                         image={book.volumeInfo.imageLinks.thumbnail}
                         link={book.volumeInfo.canonicalVolumeLink}
+                        addBook={this.addBook}
+
                       />
                     );
                   })}
