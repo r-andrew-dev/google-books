@@ -2,17 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
-    book: {
         title: {
             type: String,
             required: true,
-            unique: true
 
         },
-        authors: {
+        authors: [{
             type: String,
-            required: true
-        },
+        }],
         description: {
             type: String,
             required: true
@@ -22,9 +19,9 @@ const BookSchema = new Schema({
         },
         link: {
             type: String,
-            required: true
+            required: true,
+            unique: true
         }
-    }
 })
 
 const Book = mongoose.model('book', BookSchema);
