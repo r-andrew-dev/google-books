@@ -14,7 +14,6 @@ class Search extends Component {
         description: '',
         image: '',
         link: '',
-        message,
     }
 
     handleInputChange = event => {
