@@ -13,7 +13,8 @@ class Search extends Component {
         authors: [],
         description: '',
         image: '',
-        link: ''
+        link: '',
+        message,
     }
 
     handleInputChange = event => {
@@ -38,6 +39,7 @@ class Search extends Component {
       addBook = (book) =>
         API.saveBook(book) 
         .then(response => console.log(response))
+
         
 
 render() {
