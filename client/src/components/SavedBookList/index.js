@@ -2,13 +2,13 @@ import React from "react";
 import {Card, Button} from 'react-bootstrap/'
 
 
-// BookSearchList renders a bootstrap list item
-export function BookSearchList({ children }) {
+// Saved Book List renders a bootstrap list item
+export function SavedBookList({ children }) {
   return <ul className="list-group">{children}</ul>;
 }
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
-export function BookSearchItem({
+export function SavedBook({
   title,
   authors,
   description,

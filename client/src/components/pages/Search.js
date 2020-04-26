@@ -21,12 +21,11 @@ class Search extends Component {
       };
     
       handleFormSubmit = event => {
-        // When the form is submitted, prevent its default behavior, get books update the books state
-        console.log('made it here')
+        this.setState({books: []})
         event.preventDefault();
         API.getBooks(this.state.bookSearch)
         // .then(res => console.log(res.data.items))
-          .then(res => this.setState({ books: res.data.items,
+          .then(res => this.setState({books: res.data.items,
                                       bookSearch: ''}))
           .catch(err => console.log(err));
       };
