@@ -6,7 +6,6 @@ import Search from "./components/pages/Search";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-
 function App() {
   return (
     <Router>

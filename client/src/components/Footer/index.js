@@ -5,7 +5,7 @@ function footer() {
     return (
         <Navbar fixed='sticky-bottom' variant='dark' bg='dark'>
         <Navbar.Brand>Book Finder</Navbar.Brand>
-        <Nav.Link className="author">Built By: Rachael Andrew</Nav.Link>
+        <a href="https://github.com/r-andrew-dev" className="author">Built By: Rachael Andrew</a>
         </Navbar>
 
     )
